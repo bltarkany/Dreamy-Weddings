@@ -1,5 +1,9 @@
 import './styles.css';
-export const HeroWithImg = ({ image, greeting, intro }) => {
+export const HeroWithImg = ({
+  image = 'https://res.cloudinary.com/dvsxq5pie/image/upload/v1711490283/dreamy_wedding/home/home_florals_o2zcjv.jpg',
+  greeting,
+  intro,
+}) => {
   return (
     <section
       className={`bg-center bg-no-repeat bg-[url('${image}')] bg-cover bg-gray-400 bg-blend-multiply`}
