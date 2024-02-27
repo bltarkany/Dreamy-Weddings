@@ -15,12 +15,12 @@ export const Footer = () => {
                 className="h-8 me-3"
                 alt="FlowBite Logo"
               />
-              <span className="self-center text-3xl font-header font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-3xl font-header text-purple-400 whitespace-nowrap dark:text-white">
                 Designed By Bobbi Tarkany
               </span>
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 font-primary">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Bride & Groom
