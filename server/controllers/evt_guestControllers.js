@@ -15,8 +15,8 @@ module.exports = {
     try {
       const guest = await EventGuest.destroy({
         where: {
-          event_id: params.event_id,
-          guest_id: params.guest_id,
+          event_id: params.eventId,
+          guest_id: params.guestId,
         },
       });
       if (!guest) {
