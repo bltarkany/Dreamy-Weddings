@@ -41,7 +41,7 @@ module.exports = {
       if (!userData) {
         return res.status(404).json({ message: 'No user found' });
       }
-      res.status(202).json(user);
+      res.status(202).json(userData);
     } catch (error) {
       res.status(500).json(error);
     }
@@ -60,9 +60,13 @@ module.exports = {
   // get user by id
   async getUserById({ user }, res) {
     try {
-      const userdata = await User.findByPk(user.id, {
+      const userData = await User.findByPk(user.id, {
         attributes: { exclude: ['password'] },
       });
+      if (!userData) {
+        return res.status(404).json({ message: 'No user found' });
+      }
+      res.status(202).json(userData);
     } catch (error) {
       res.status(500).json(error);
     }
