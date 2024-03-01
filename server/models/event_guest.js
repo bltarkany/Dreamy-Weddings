@@ -24,6 +24,7 @@ EventGuest.init(
         key: 'id',
       },
     },
+    // TODO add is_attending????
   },
   {
     sequelize,
