@@ -1,7 +1,7 @@
 const { Event } = require('../models');
 
 module.exports = {
-  // TODO: create event
+  // create event
   async createEvent({ user, body }, res) {
     try {
       const event = await Event.create(body);
@@ -10,7 +10,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: update event
+  // update event
   async updateEvent({ user, body, params }, res) {
     try {
       const event = await Event.update(body, {
@@ -24,7 +24,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: delete event
+  // delete event
   async deleteEvent({ user, params }, res) {
     try {
       const event = await Event.destroy({
@@ -39,7 +39,15 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get all events
+  // get all events
+  async getEvents({ user }, res) {
+    try {
+      const events = await Event.findAll();
+      res.status(200).json(events);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // TODO: get single event
   // TODO: get event with guest count
 };
