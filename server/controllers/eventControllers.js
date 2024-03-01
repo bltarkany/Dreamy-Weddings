@@ -1,4 +1,4 @@
-const { Event } = require('../models');
+const { Event, Guest, EventGuest } = require('../models');
 
 module.exports = {
   // create event
@@ -42,7 +42,14 @@ module.exports = {
   // get all events
   async getEvents({ user }, res) {
     try {
-      const events = await Event.findAll();
+      const events = await Event.findAll({
+        include: [
+          {
+            model: Guest,
+            through: EventGuest,
+          },
+        ],
+      });
       res.status(200).json(events);
     } catch (error) {
       res.status(500).json(error);
@@ -51,7 +58,14 @@ module.exports = {
   // get single event
   async getEventById({ user, params }, res) {
     try {
-      const event = await Event.findByPk(params.id);
+      const event = await Event.findByPk(params.id, {
+        include: [
+          {
+            model: Guest,
+            through: EventGuest,
+          },
+        ],
+      });
       if (!event) {
         return res.status(404).json({ message: 'No event found' });
       }
@@ -60,5 +74,4 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get event with guest count
 };
