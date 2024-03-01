@@ -48,6 +48,17 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get single event
+  // get single event
+  async getEventById({ user, params }, res) {
+    try {
+      const event = await Event.findByPk(params.id);
+      if (!event) {
+        return res.status(404).json({ message: 'No event found' });
+      }
+      res.status(200).json(event);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // TODO: get event with guest count
 };
