@@ -33,7 +33,11 @@ module.exports = {
       if (!event) {
         return res.status(404).json({ message: 'No event found' });
       }
-      // TODO - add event guest many to many clean up
+      // TEST - add event guest many to many clean up
+      const evtgst = await EventGuest.destroy({
+        where: { event_id: params.id },
+      });
+      console.log(evtgst);
       res.status(200).json({ message: 'Event successfully Deleted' });
     } catch (error) {
       res.status(500).json(error);
