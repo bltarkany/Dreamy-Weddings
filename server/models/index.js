@@ -4,6 +4,7 @@ const Guest = require('./guest');
 const EventGuest = require('./event_guest');
 const WedParty = require('./weddingparty');
 const Gallery = require('./gallery');
+const Layout = require('./layout');
 
 // associations
 Gallery.belongsTo(Event, {
@@ -25,4 +26,4 @@ Guest.belongsToMany(Event, {
   through: EventGuest,
 });
 
-module.exports = { User, Event, Guest, EventGuest, WedParty, Gallery };
+module.exports = { User, Event, Guest, EventGuest, WedParty, Gallery, Layout };
