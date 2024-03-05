@@ -1,4 +1,3 @@
-// TODO: get user by id
 const { User } = require('../models');
 // TODO - require auth middleware
 
@@ -34,12 +33,12 @@ module.exports = {
     }
   },
   // update user
-  async updateUser({ body, params }, res) {
+  async updateUser({ body, user }, res) {
     try {
-      const user = await User.update(body, {
-        where: { id: params.id },
+      const userData = await User.update(body, {
+        where: { id: user.id },
       });
-      if (!user) {
+      if (!userData) {
         return res.status(404).json({ message: 'No user found' });
       }
       res.status(202).json(user);
@@ -59,4 +58,13 @@ module.exports = {
     }
   },
   // get user by id
+  async getUserById({ user }, res) {
+    try {
+      const userdata = await User.findByPk(user.id, {
+        attributes: { exclude: ['password'] },
+      });
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
