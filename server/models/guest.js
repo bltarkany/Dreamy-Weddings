@@ -46,7 +46,7 @@ Guest.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'guest',
   }
 );
 
