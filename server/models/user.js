@@ -19,13 +19,46 @@ User.init(
     },
     first_name: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    middle_name: {
+      type: DataTypes.STRING,
       allowNull: true,
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8, 16],
+      },
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
     hooks: {
-      beforeCreate: async (newUser) => {},
-      beforeUpdate: async (updateUser) => {},
+      beforeCreate: async (newUser) => {
+        newUser.password = await bcrypt.hash(newUser.password, 10);
+        return newUser;
+      },
+      beforeUpdate: async (updateUser) => {
+        updateUser.password = await bcrypt.hash(updateUser.password, 10);
+        return updateUser;
+      },
     },
     sequelize,
     freezeTableName: true,
@@ -34,6 +67,4 @@ User.init(
   }
 );
 
-// TODO:create columns - first, middle, last, role, email, password,
-// TODO:complete hooks with bcrypt
-// TODO:add exportation
+module.exports = User;
