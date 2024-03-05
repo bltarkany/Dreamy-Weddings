@@ -1,5 +1,3 @@
-// TODO: update user
-// TODO: get users
 // TODO: get user by id
 const { User } = require('../models');
 // TODO - require auth middleware
@@ -50,5 +48,15 @@ module.exports = {
     }
   },
   // get users
+  async getUsers(req, res) {
+    try {
+      const users = await User.findAll({
+        attributes: { exclude: ['password'] },
+      });
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // get user by id
 };
