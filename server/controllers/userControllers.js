@@ -36,6 +36,19 @@ module.exports = {
     }
   },
   // update user
+  async updateUser({ body, params }, res) {
+    try {
+      const user = await User.update(body, {
+        where: { id: params.id },
+      });
+      if (!user) {
+        return res.status(404).json({ message: 'No user found' });
+      }
+      res.status(202).json(user);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // get users
   // get user by id
 };
