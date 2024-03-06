@@ -1,3 +1,4 @@
 const userControllers = require('./userControllers');
+const eventControllers = require('./eventControllers');
 
-module.exports = { userControllers };
+module.exports = { userControllers, eventControllers };
