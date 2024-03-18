@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
-import SlideCarousel from '../components/ui/banners/carousel';
+// import SlideCarousel from '../components/ui/banners/carousel';
+// import Hero from '../components/ui/banners/hero';
+import {
+  SlideCarousel,
+  Hero,
+  HeroWithImg,
+} from '../components/ui/banners/index';
 
 // default images
 const defaultImgs = [
@@ -17,8 +23,11 @@ export default function Home() {
 
   return (
     <>
-      <SlideCarousel images={images} />
-      <h1>home page</h1>
+      {/* <SlideCarousel images={images} />
+      <Hero
+        header={`Mr. and Ms. cordially invite you to their upcoming nuptials`}
+      /> */}
+      <HeroWithImg />
     </>
   );
 }
