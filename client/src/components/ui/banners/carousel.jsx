@@ -1,4 +1,4 @@
-export default function SlideCarousel({ images }) {
+export const SlideCarousel = ({ images }) => {
   return (
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
       {/* <!-- Carousel wrapper --> */}
@@ -82,4 +82,4 @@ export default function SlideCarousel({ images }) {
       </button>
     </div>
   );
-}
+};
