@@ -46,7 +46,7 @@ module.exports = {
     }
   },
   // get all gallery items
-  async getGalleries({ user }, res) {
+  async getGalleries(req, res) {
     try {
       const galleries = await Gallery.findAll();
       res.status(201).json(galleries);
@@ -55,7 +55,7 @@ module.exports = {
     }
   },
   // get galley items by event
-  async getGalleryByEvent({ user, params }, res) {
+  async getGalleryByEvent({ params }, res) {
     try {
       const galleries = await Gallery.findAll({
         where: {
@@ -68,7 +68,7 @@ module.exports = {
     }
   },
   // get single gallery item
-  async getGalleryById({ user, params }, res) {
+  async getGalleryById({ params }, res) {
     try {
       const gallery = await Gallery.findByPk(params.id);
       if (!gallery) {
