@@ -44,7 +44,7 @@ module.exports = {
     }
   },
   // get all events
-  async getEvents({ user }, res) {
+  async getEvents(req, res) {
     try {
       const events = await Event.findAll({
         include: [
@@ -60,7 +60,7 @@ module.exports = {
     }
   },
   // get single event
-  async getEventById({ user, params }, res) {
+  async getEventById({ params }, res) {
     try {
       const event = await Event.findByPk(params.id, {
         include: [
