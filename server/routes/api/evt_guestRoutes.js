@@ -7,9 +7,10 @@ const {
 // /api/evtguests/
 router.route('/').post(authMiddleware, addGuest);
 // /api/evtguests/:id
+router.route('/:id').put(authMiddleware, guestAttending);
+// /api/evtguests/:guestId/removeguest/:eventId
 router
-  .route('/:id')
-  .put(authMiddleware, guestAttending)
+  .route('/:guestId/removeguest/:eventId')
   .delete(authMiddleware, removeGuest);
 
 module.exports = router;
