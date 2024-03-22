@@ -18,7 +18,5 @@ router
   .get(getEventById)
   .put(authMiddleware, updateEvent)
   .delete(authMiddleware, deleteEvent);
-// /api/events
-router.route('/');
 
 module.exports = router;
