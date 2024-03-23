@@ -9,7 +9,6 @@ const {
     getMemberById,
   },
 } = require('../../controllers');
-const { get } = require('./evt_guestRoutes');
 
 // /api/weddingparty/
 router.route('/').get(getMembers).post(authMiddleware, createMember);
