@@ -45,8 +45,9 @@ User.init(
       },
     },
     role: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
       allowNull: false,
+      values: ['groom', 'bride'],
     },
   },
   {
