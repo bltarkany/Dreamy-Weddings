@@ -69,7 +69,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get guest count
+  // maybe: get guest count
   // async createGuest({user, body}, res){
   //     try {
 
