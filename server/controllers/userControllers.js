@@ -1,14 +1,15 @@
 const { User } = require('../models');
-// TODO - require auth middleware
+//- require auth middleware
+const { signToken } = require('../utils/auth');
 
 module.exports = {
   // create user
   async signUp({ body }, res) {
     try {
       const user = await User.create(body);
-      // TODO - add auth here
-
-      res.status(201).json(user);
+      // - add auth here
+      const token = signToken(user);
+      res.status(201).json({ token, user });
     } catch (error) {
       res.status(500).json(error);
     }
