@@ -27,8 +27,9 @@ module.exports = {
           .status(401)
           .json({ message: 'Provided password does not match our records' });
       }
-      // TODO - add auth here
-      res.status(202).json(user);
+      // - add auth here
+      const token = signToken(user);
+      res.status(202).json({ token, user });
     } catch (error) {
       res.status(500).json(error);
     }
