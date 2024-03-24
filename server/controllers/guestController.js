@@ -1,7 +1,7 @@
 const { Event, Guest, EventGuest } = require('../models');
 
 module.exports = {
-  // TODO: create guest
+  // create guest
   async createGuest({ user, body }, res) {
     try {
       const guest = await Guest.create(body);
@@ -10,7 +10,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: update guest
+  // update guest
   async updateGuest({ user, body, params }, res) {
     try {
       const guest = await Guest.update(body, {
@@ -28,7 +28,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: delete guest
+  // delete guest
   async deleteGuest({ user, params }, res) {
     try {
       const guest = await Guest.destroy({
@@ -46,7 +46,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get all guests
+  // get all guests
   async getGuests({ user }, res) {
     try {
       const guests = await Guest.findAll();
@@ -55,7 +55,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get one guest
+  // get one guest
   async getGuestbyId({ user, params }, res) {
     try {
       const guest = await Guest.findByPk(params.id);
