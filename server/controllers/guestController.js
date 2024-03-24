@@ -31,6 +31,17 @@ module.exports = {
   // TODO: delete guest
   async deleteGuest({ user, params }, res) {
     try {
+      const guest = await Guest.destroy({
+        where: {
+          id: params.id,
+        },
+      });
+      if (!guest) {
+        return res
+          .status(404)
+          .json({ message: 'No guest with the selected id.' });
+      }
+      res.status(201).json(guest);
     } catch (error) {
       res.status(500).json(error);
     }
