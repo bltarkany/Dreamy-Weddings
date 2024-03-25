@@ -29,4 +29,20 @@ module.exports = {
       res.status(500).json(error);
     }
   },
+  // update is attending
+  async guestAttending({ user, body, params }, res) {
+    try {
+      const guest = await EventGuest.update(body, {
+        where: {
+          id: params.id,
+        },
+      });
+      if (!guest) {
+        return res.status(404).json({ message: 'No guest matching that id.' });
+      }
+      res.status(201).json(guest);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
