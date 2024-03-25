@@ -1,7 +1,7 @@
 const { WedParty } = require('../models');
 
 module.exports = {
-  // TODO: create wedding party member
+  // create wedding party member
   async createMember({ user, body }, res) {
     try {
       const member = await WedParty.create(body);
@@ -10,7 +10,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: update party member
+  // update party member
   async updateMember({ user, body, params }, res) {
     try {
       const member = await WedParty.update(body, {
@@ -28,7 +28,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: delete party member
+  // delete party member
   async deleteMember({ user, params }, res) {
     try {
       const member = await WedParty.destroy({
@@ -41,13 +41,12 @@ module.exports = {
           message: 'No wedding party member found matching this id.',
         });
       }
-
       res.status(200).json(member);
     } catch (error) {
       res.status(500).json(error);
     }
   },
-  // TODO: get all party
+  // get all party
   async getMembers({ user }, res) {
     try {
       const members = await WedParty.findAll();
@@ -56,9 +55,16 @@ module.exports = {
       res.status(500).json(error);
     }
   },
-  // TODO: get single party member
+  // get single party member
   async getMemberById({ user, params }, res) {
     try {
+      const member = await WedParty.findByPk(params.id);
+      if (!member) {
+        return res.status(404).json({
+          message: 'No wedding party member found matching this id.',
+        });
+      }
+      res.status(200).json(member);
     } catch (error) {
       res.status(500).json(error);
     }
