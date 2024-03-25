@@ -31,8 +31,20 @@ module.exports = {
     }
   },
   // TODO: delete party member
-  async createMember({ user, body }, res) {
+  async deleteMember({ user, params }, res) {
     try {
+      const member = await WedParty.destroy({
+        where: {
+          id: params.id,
+        },
+      });
+      if (!member) {
+        return res.status(404).json({
+          message: 'No wedding party member found matching this id.',
+        });
+      }
+
+      res.status(200).json(member);
     } catch (error) {
       res.status(500).json(error);
     }
