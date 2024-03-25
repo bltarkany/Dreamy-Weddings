@@ -10,8 +10,19 @@ module.exports = {
     }
   },
   // TODO: delete gallery item
-  async deleteGallery({ user }, res) {
+  async deleteGallery({ user, params }, res) {
     try {
+      const gallery = await Gallery.destroy({
+        where: {
+          id: params.id,
+        },
+      });
+      if (!gallery) {
+        return res
+          .status(404)
+          .json({ message: 'No gallery found by that id.' });
+      }
+      res.status(201).json(gallery);
     } catch (error) {
       res.status(500).json();
     }
