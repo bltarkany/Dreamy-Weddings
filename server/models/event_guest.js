@@ -24,7 +24,11 @@ EventGuest.init(
         key: 'id',
       },
     },
-    // TODO add is_attending????
+    // TEST add is_attending????
+    is_attending: {
+      type: DataTypes.ENUM,
+      values: ['yes', 'no', 'needs rsvp'],
+    },
   },
   {
     sequelize,
