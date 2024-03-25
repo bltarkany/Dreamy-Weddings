@@ -48,6 +48,8 @@ module.exports = {
   // TODO: get all gallery items
   async getGalleries({ user }, res) {
     try {
+      const galleries = await Gallery.findAll();
+      res.status(201).json(galleries);
     } catch (error) {
       res.status(500).json();
     }
