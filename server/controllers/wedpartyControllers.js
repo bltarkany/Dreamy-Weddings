@@ -18,13 +18,11 @@ module.exports = {
           id: params.id,
         },
       });
-
       if (!member) {
         return res
           .status(404)
           .json({ message: 'No wedding party member found matching this id.' });
       }
-
       res.status(200).json(member);
     } catch (error) {
       res.status(500).json(error);
@@ -50,14 +48,16 @@ module.exports = {
     }
   },
   // TODO: get all party
-  async createMember({ user, body }, res) {
+  async getMembers({ user }, res) {
     try {
+      const members = await WedParty.findAll();
+      res.status(200).json(members);
     } catch (error) {
       res.status(500).json(error);
     }
   },
   // TODO: get single party member
-  async createMember({ user, body }, res) {
+  async getMemberById({ user, params }, res) {
     try {
     } catch (error) {
       res.status(500).json(error);
