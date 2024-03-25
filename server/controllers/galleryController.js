@@ -28,8 +28,19 @@ module.exports = {
     }
   },
   // TODO: update gallery item
-  async updateGallery({ user }, res) {
+  async updateGallery({ user, body, params }, res) {
     try {
+      const gallery = await Gallery.update(body, {
+        where: {
+          id: params.id,
+        },
+      });
+      if (!gallery) {
+        return res
+          .status(404)
+          .json({ message: 'No gallery found by that id.' });
+      }
+      res.status(201).json(gallery);
     } catch (error) {
       res.status(500).json();
     }
