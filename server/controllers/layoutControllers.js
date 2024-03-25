@@ -27,8 +27,10 @@ module.exports = {
     }
   },
   // TODO - create layout
-  async namehere({ user }, res) {
+  async createLayout({ user, body }, res) {
     try {
+      const layout = await Layout.create(body);
+      res.status(201).json(layout);
     } catch (error) {
       res.status(500).json();
     }
