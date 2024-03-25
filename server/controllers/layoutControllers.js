@@ -1,7 +1,7 @@
 const { Layout } = require('../models');
 
 module.exports = {
-  // TODO - get layouts
+  // - get layouts
   async getLayouts({ user }, res) {
     try {
       const layouts = await Layout.findAll();
@@ -10,7 +10,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO - get by page
+  // - get by page
   async getByPage({ user, params }, res) {
     try {
       const layouts = await Layout.findAll({
@@ -26,7 +26,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO - create layout
+  // - create layout
   async createLayout({ user, body }, res) {
     try {
       const layout = await Layout.create(body);
@@ -35,7 +35,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO - update layout
+  // - update layout
   async updateLayout({ user, body, params }, res) {
     try {
       const layout = await Layout.update(body, {
@@ -53,9 +53,20 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO - delete layout
-  async namehere({ user }, res) {
+  // - delete layout
+  async deleteLayout({ user, params }, res) {
     try {
+      const layout = await Layout.destroy({
+        where: {
+          page: params.id,
+        },
+      });
+      if (!layout) {
+        return res
+          .status(404)
+          .json({ message: 'No layout found with this id' });
+      }
+      res.status(200).json(layout);
     } catch (error) {
       res.status(500).json();
     }
