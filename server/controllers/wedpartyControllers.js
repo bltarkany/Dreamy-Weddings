@@ -11,7 +11,44 @@ module.exports = {
     }
   },
   // TODO: update party member
+  async updateMember({ user, body, params }, res) {
+    try {
+      const member = await WedParty.update(body, {
+        where: {
+          id: params.id,
+        },
+      });
+
+      if (!member) {
+        return res
+          .status(404)
+          .json({ message: 'No wedding party member found matching this id.' });
+      }
+
+      res.status(200).json(member);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // TODO: delete party member
+  async createMember({ user, body }, res) {
+    try {
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // TODO: get all party
+  async createMember({ user, body }, res) {
+    try {
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   // TODO: get single party member
+  async createMember({ user, body }, res) {
+    try {
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
