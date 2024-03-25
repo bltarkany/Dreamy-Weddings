@@ -36,8 +36,19 @@ module.exports = {
     }
   },
   // TODO - update layout
-  async namehere({ user }, res) {
+  async updateLayout({ user, body, params }, res) {
     try {
+      const layout = await Layout.update(body, {
+        where: {
+          page: params.id,
+        },
+      });
+      if (!layout) {
+        return res
+          .status(404)
+          .json({ message: 'No layout found with this id' });
+      }
+      res.status(200).json(layout);
     } catch (error) {
       res.status(500).json();
     }
