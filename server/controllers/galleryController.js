@@ -55,8 +55,14 @@ module.exports = {
     }
   },
   // TODO: get galley items by event
-  async getGalleryByEvent({ user }, res) {
+  async getGalleryByEvent({ user, params }, res) {
     try {
+      const galleries = await Gallery.findAll({
+        where: {
+          event_id: params.id,
+        },
+      });
+      res.status(201).json(galleries);
     } catch (error) {
       res.status(500).json();
     }
