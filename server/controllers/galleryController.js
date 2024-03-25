@@ -1,6 +1,6 @@
 const { Gallery } = require('../models');
 module.exports = {
-  // TODO: create gallery item
+  // create gallery item
   async createGallery({ user, body }, res) {
     try {
       const gallery = await Gallery.create(body);
@@ -9,7 +9,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO: delete gallery item
+  // delete gallery item
   async deleteGallery({ user, params }, res) {
     try {
       const gallery = await Gallery.destroy({
@@ -27,7 +27,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO: update gallery item
+  // update gallery item
   async updateGallery({ user, body, params }, res) {
     try {
       const gallery = await Gallery.update(body, {
@@ -45,7 +45,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO: get all gallery items
+  // get all gallery items
   async getGalleries({ user }, res) {
     try {
       const galleries = await Gallery.findAll();
@@ -54,7 +54,7 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO: get galley items by event
+  // get galley items by event
   async getGalleryByEvent({ user, params }, res) {
     try {
       const galleries = await Gallery.findAll({
@@ -67,9 +67,16 @@ module.exports = {
       res.status(500).json();
     }
   },
-  // TODO: get single gallery item
-  async getGalleryById({ user }, res) {
+  // get single gallery item
+  async getGalleryById({ user, params }, res) {
     try {
+      const gallery = await Gallery.findByPk(params.id);
+      if (!gallery) {
+        return res
+          .status(404)
+          .json({ message: 'No gallery found by that id.' });
+      }
+      res.status(201).json(gallery);
     } catch (error) {
       res.status(500).json();
     }
