@@ -13,7 +13,8 @@ const defaultImgs = [
   'https://res.cloudinary.com/dvsxq5pie/image/upload/v1711490428/dreamy_wedding/home/home_ring_wvwfle.jpg',
   'https://res.cloudinary.com/dvsxq5pie/image/upload/v1711490278/dreamy_wedding/home/home_coupleback_szz0qa.jpg',
 ];
-const heroImg = `https://res.cloudinary.com/dvsxq5pie/image/upload/v1711490283/dreamy_wedding/home/home_florals_o2zcjv.jpg`;
+const heroImg =
+  'https://res.cloudinary.com/dvsxq5pie/image/upload/v1711490283/dreamy_wedding/home/home_florals_o2zcjv.jpg';
 
 export default function Home() {
   const [images, setImages] = useState([]);
@@ -26,8 +27,8 @@ export default function Home() {
     <>
       <HeroWithImg
         image={heroImg}
-        greeting={`Mr. and Ms. cordially invite you to their upcoming nuptials`}
-        intro={`The happy couple is hope you can attend this beautiful event and Share in there exchanging of vows`}
+        greeting={`Mr. Smith and Ms. Smith cordially invite you to their upcoming nuptials`}
+        intro={`The happy couple hopes you can attend this beautiful event and share in their exchanging of vows`}
       />
     </>
   );
