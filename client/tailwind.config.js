@@ -18,6 +18,10 @@ export default {
         3000: '3000ms',
       },
     },
+    fontFamily: {
+      header: ['Kaushan Script', 'Great Vibes', 'cursive'],
+      primary: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+    },
   },
   plugins: [require('flowbite/plugin')],
 };
